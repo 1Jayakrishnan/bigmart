@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<body>
+<div class="card-body">
+  <h4 class="card-title">View available Products</h4>
+  <p class="card-description">
+  </p>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Product Name</th>
+          <th>Price</th>
+          <th>Description</th>
+          <th>Image</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for d in data %}
+        <tr>
+            <td>{{d.Catgories}}</td>
+            <td>{{d.Products}}</td>
+            <td>{{d.Price}}</td>
+            <td>{{d.Description}}</td>
+            <td>
+                <img src="{{d.ProductImage.url}}">
+            </td>
+            <td>
+                <a href="{% url 'editpro' p_id=d.id %}"><button class="btn btn-primary mr-2">EDIT</button></a>
+                <a href="{% url 'deletepro' p_id=d.id %}"><button class="btn btn-danger mr-2">DELETE</button></a>
+            </td>
+        </tr>
+       {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+{% if messages %}
+  {% for i in messages %}
+    {% if i.tags == 'success' %}
+      <script>
+        swal('{{i}}','','success')
+      </script>
+   {% elif i.tags == 'error' %}
+      <script>
+        swal('{{i}}','','error')
+      </script>
+   {% elif i.tags == 'warning' %}
+      <script>
+        swal('{{i}}','','warning')
+      </script>
+   {% elif i.tags == 'info' %}
+      <script>
+        swal('{{i}}','','info')
+      </script>
+   {% endif %}
+ {% endfor %}
+{% endif %}
+</body>
+</html>
+{% endblock %}

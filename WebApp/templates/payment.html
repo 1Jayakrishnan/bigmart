@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>RegistrationForm_v10 by Colorlib</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<!-- LINEARICONS -->
+		<link rel="stylesheet" href="{% static 'pay/fonts/linearicons/style.css' %}">
+		
+		<!-- STYLE CSS -->
+		<link rel="stylesheet" href="{% static 'pay/css/style.css' %}">
+	</head>
+
+	<body>
+
+		<div class="myForm">
+			<div class="inner">
+				<img src="#" alt="" class="image-1">
+				<form action="" method="post">
+					<div class="form-holder">
+						<h2 style="text-align: center; font-family: cursive; font-size: 20px; color: rgb(47, 45, 45);">Buyer Name: {{customer.Name}}</h2>
+						<h2 style="text-align: center; font-family: cursive; font-size: 20px; color: rgb(47, 45, 45);">Amount: {{payy_str}}</h2>
+					</div>
+					 <!-- <div class="form-holder">
+						<span class=""></span>
+						<input type="text" class="form-control" placeholder="Amount" value="{{payy_str}}" disabled>
+					</div> -->
+					<h2 style="text-align: center; font-family: cursive; font-size: 30px; color: rgb(47, 45, 45);">Proceed to make payment</h2>
+					<!--
+					<div class="form-holder">
+						<span class="lnr lnr-envelope"></span>
+						<input type="text" class="form-control" placeholder="Mail">
+					</div>
+					<div class="form-holder">
+						<span class="lnr lnr-lock"></span>
+						<input type="password" class="form-control" placeholder="Password">
+					</div>
+					<div class="form-holder">
+						<span class="lnr lnr-lock"></span>
+						<input type="password" class="form-control" placeholder="Confirm Password">
+					</div> -->
+					<button>
+						<span>Make payment</span>
+					</button>
+				</form>
+				
+			</div>
+			
+		</div>
+
+		<style>
+			
+
+			.myForm{
+				margin-left: 300px;
+				margin-top:100px;
+				border-radius: 5px;
+			}
+
+			body {
+			  margin: 0;
+			  padding: 0;
+			  background-image: url("{% static 'pay/images/img.png' %}");
+			  background-size: cover; /* Ensures the image covers the entire screen */
+			  background-repeat: no-repeat; /* Prevents the image from repeating */
+			  background-position: center; /* Centers the image */
+			  height: 80vh; /* Ensures it takes up the full height of the viewport */
+			  width: 90vw; /* Ensures it takes up the full width of the viewport */
+			}
+		  </style>
+
+		
+		<script src="{% static 'pay/js/jquery-3.3.1.min.js' %}"></script>
+		<script src="{% static 'pay/js/main.js' %}"></script>
+
+		<script src="https://checkout.razorpay.com/v1/checkout.js"
+			data-key="rzp_test_5m6Hq2UgJxODb3"
+			data-amount="{{payy_str}}"
+			data-currency="INR"
+			data-order_id="{{payment.order_id}}"
+			data-buttontext=""
+			data-name="Bigmart"
+			data-description="Your description"
+			data-image=""
+			data-prefill.name="abc"
+			data-prefill.email="abc@gmail.com"
+			data-theme.color="#4badeb"
+		></script>
+
+	</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>
